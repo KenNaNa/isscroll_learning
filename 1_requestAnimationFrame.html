@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	<!-- requestAnimationFrame的兼容性写法 -->
+	// requestAnimationFrame 标准的写法
+	// webkit 谷歌内核
+	// moz 火狐内核
+	// o 欧鹏内核
+	// ms IE内核
+	// cb 浏览器的帧
+	var requestAnimationFrame = window.requestAnimationFrame ||
+								window.webkitRequestAnimationFrame ||
+								window.mozRequestAnimationFrame ||
+								window.oRequestAnimationFrame ||
+								window.msRequestAnimationFrame ||
+								function(cb){window.setTimeout(callback,1000/60);};
+
+	var count = 0;
+
+	function cb(){
+		count ++;
+		console.log(count);
+		requestAnimationFrame(cb);
+	}
+
+	cb();
+</script>
