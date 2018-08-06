@@ -1,0 +1,47 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	<!-- 实现后缀兼容 -->
+	// webkitTransform 谷歌内核
+	// mozTransform 火狐内核
+	// oTransform 欧鹏内核
+	// msTransform IE内核
+	
+	var vendor = (function(){
+		var element = document.createElement('div').style;
+		console.log(element)
+		var vendors = ['t', 'webkitT', 'MozT', 'msT', 'OT'],
+			transform,
+			i = 0,
+			l = vendors.length;
+			console.log(l)
+			for(;i<l;i++){
+				// 拼凑样式
+				transform = vendors[i]+'ransform';
+				if(transform in element){
+					// 判断transform 是否是 element的属性
+					// 如果是，就要截取浏览器的后缀名
+					// 最后返回浏览器的后缀名
+					// 在谷歌浏览器中 vendors[0]就好了
+					// 直接返回空，就是指没有后缀名，浏览器也支持了
+					return vendors[i].substr(0,vendors[i].length-1);
+				}
+			}
+			// 否则就返回false
+			return false;
+	})()
+
+	console.log(vendor);
+
+
+	function _prefixStyle (style) {
+		// 什么都不支持返回false
+		if ( vendor === false ) return false;
+		// 没有后缀名也支持
+		if ( vendor === '' ) return style;
+		// 最后直接返回
+		return vendor + style.charAt(0).toUpperCase() + style.substr(1);
+	}
+
+	var t = _prefixStyle("transform");
+	console.log(t);
+</script>
