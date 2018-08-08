@@ -1,0 +1,27 @@
+<meta charset="utf-8">
+<button type="button" value="点我啊" id="btn">点我啊</button>
+<script type="text/javascript">
+	<!-- 研究removeEvent()移除事件 -->
+	var me = {}
+	me.getElementById = function(id){
+		return document.getElementById(id);
+	}
+
+	me.removeEvent = function(el,type,fn,capture){
+		el.removeEventListener(type,fn,!!capture);
+	}
+
+	// 测试
+	var oBtn = me.getElementById('btn');
+	
+
+
+	oBtn.onclick = clickMe
+	function clickMe(){
+		console.log(this);
+	}
+
+	me.removeEvent(oBtn,'click',function(){
+		console.log(1)
+	},false);
+</script>

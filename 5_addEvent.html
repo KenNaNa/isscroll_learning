@@ -1,0 +1,22 @@
+<meta charset="utf-8">
+<button type="button" value="点我啊" id="btn">点我啊</button>
+<script type="text/javascript">
+	<!-- 添加事件封装 -->
+	var me = {}
+	me.addEvent = function(el,type,fn,capture){
+		el.addEventListener(type,fn,!!capture);
+	}
+
+	// 测试
+	me.getElementById = function(id){
+		return document.getElementById(id);
+	}
+
+	var oBtn = me.getElementById('btn');
+	console.log(oBtn);
+	me.addEvent(oBtn,'click',clickMe,true);
+	function clickMe(){
+		console.log(this);
+	}
+
+</script>
