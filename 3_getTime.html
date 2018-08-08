@@ -1,0 +1,11 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	<!-- 获取时间 -->
+	var me = {}
+	me['getTime'] = Date.now() || function(){
+		return (new Date()).getTime();
+	}
+
+	console.log(me);
+	console.log(me.getTime)
+</script>
