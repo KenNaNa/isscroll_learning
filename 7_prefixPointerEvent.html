@@ -1,0 +1,15 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	<!-- IE指针事件的更正类型 -->
+	var me = {}
+	me.prefixPointerEvent = function (pointerEvent) {
+		// 用于IE
+		// MSPointerDown 事件  --- > pointerdown 事件
+		// MsPointer + 'pointerdown'.charAt(7)将第7个字符变成大写了
+		// 'poniterdown'.substr(8)从d之后截取
+		// 再拼接在一起
+		return window.MSPointerEvent ?
+			'MSPointer' + pointerEvent.charAt(7).toUpperCase() + pointerEvent.substr(8):
+			pointerEvent;
+	};
+</script>
