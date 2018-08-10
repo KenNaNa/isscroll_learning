@@ -1,0 +1,39 @@
+<meta charset="utf-8">
+<p class="p op kp">哈哈啊哈</p>
+<script type="text/javascript">
+	var me = {}
+	me.hasClass = function (e, c) {
+		// re 是一个正则表达式
+		// (^|\\s)是一个分组 ^ 直接开头 或者是以空格 \\s 第一个反斜杠为转义字符
+		// (\\s|$)也是一个分组 $ 是直接结尾
+		// p op kp
+		var re = new RegExp("(^|\\s)" + c + "(\\s|$)");
+		return re.test(e.className);
+	};
+
+	// 调试
+	var op = document.querySelector('.op');
+	console.log(op);
+
+	if(me.hasClass(op,'op')){
+		console.log('存在')
+	}else{
+		console.log('不存在');
+	}
+
+
+	me.addClass = function (e, c) {
+		if ( me.hasClass(e, c) ) {
+			return;
+		}
+		// 将类名进行切割
+		// 然后添加新的类名
+		// 再拼接器类
+		var newclass = e.className.split(' ');
+		newclass.push(c);
+		e.className = newclass.join(' ');
+	};
+
+	// 调试
+	me.addClass(op,'cp');
+</script>
