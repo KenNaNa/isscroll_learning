@@ -1,0 +1,57 @@
+<meta charset="utf-8">
+<style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.div1{
+		position: relative;
+		margin-top:50px;
+		margin-left:50px;
+	}
+	.div2{
+		position: absolute;
+		top:100px;
+		left: 200px;
+	}
+</style>
+<div class="div1">
+	<div class="div2">
+		
+	</div>
+</div>
+<script type="text/javascript">
+	<!-- 今天我们来探讨一下这个offset -->
+	var me = {}
+	me.offset = function(el){
+		// 获取元素当前的定位位置
+		// left 
+		// top
+		var left = -el.offsetLeft,
+			top = -el.offsetTop;
+
+		// jshint -W084
+		// 循环迭代
+		// 因为可能是层层定位的，
+		// 所以要把el.offsetParent定位父级给当前的el
+		// 再次计算定位位置
+		while (el = el.offsetParent) {
+			left -= el.offsetLeft;
+			top -= el.offsetTop;
+		}
+		// jshint +W084
+
+		// 最后返回总的定位{
+		// 		left: left,
+		// 		top: top
+		// }
+		return {
+			left: left,
+			top: top
+		};
+	}
+
+	var oDiv2 = document.querySelector('.div2');
+	var obj = me.offset(oDiv2);
+	console.log(obj);
+</script>

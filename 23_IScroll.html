@@ -1,0 +1,23 @@
+<meta charset="utf-8">
+<div class="div1">
+	<div>
+		
+	</div>
+</div>
+<script type="text/javascript">
+	<!-- IScroll构造函数 -->
+	function IScroll(el,options={}){
+		// 获取元素
+		console.log((typeof el==='string'))
+		this.wrapper = ((typeof el==='string') ? (document.querySelector(el)) : el);
+		console.log(this.wrapper)
+		// 存储要滚动的元素
+		this.scroller = this.wrapper.children[0];
+		// 获取滚动元素的样式
+		this.scrollerStyle = this.scroller.style;
+	}
+
+	var obj = new IScroll('.div1',{});
+
+
+</script>

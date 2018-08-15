@@ -1,0 +1,15 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	<!-- 今天我们来探讨tap -->
+	var me = {};
+	me.tap = function (e, eventName) {
+		var ev = document.createEvent('Event');
+		ev.initEvent(eventName, true, true);
+		console.log(ev);
+		ev.pageX = e.pageX;
+		ev.pageY = e.pageY;
+		e.target.dispatchEvent(ev);
+	};
+
+	me.tap(e,'touchstart');
+</script>

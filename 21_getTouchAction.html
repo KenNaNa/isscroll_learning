@@ -1,0 +1,22 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	<!--  -->
+	var me = {};
+		me.getTouchAction = function(eventPassthrough, addPinch) {
+		// 获取触摸的动作
+		// 判断竖屏
+		// 还是横屏
+		var touchAction = 'none';
+		if ( eventPassthrough === 'vertical' ) {
+			touchAction = 'pan-y';
+		} else if (eventPassthrough === 'horizontal' ) {
+			touchAction = 'pan-x';
+		}
+		if (addPinch && touchAction != 'none') {
+			// add pinch-zoom support if the browser supports it, but if not (eg. Chrome <55) do nothing
+			// 触摸放大
+			touchAction += ' pinch-zoom';
+		}
+		return touchAction;
+	};
+</script>
